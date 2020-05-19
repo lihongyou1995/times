@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    #time_content {
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+        font-size: 50px;
+        position: relative;
+    }
+
+    #time_content span {
+        color: red;
+    }
+
+    .time_main {
+        position: relative;
+        top: 50%;
+        height: 100px;
+        line-height: 100px;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+    
+</style>
+
+<body>
+
+    <div id="time_content">
+        <div class="time_main">
+            距离2021年春节还有<span id="d"></span>天
+            <span id="h"></span>时
+            <span id="m"></span>分
+            <span id="s"></span>秒
+        </div>
+    </div>
+    <script>
+        setInterval(() => {
+            let date1 = new Date(2021, 01, 12, 00, 00, 00)
+            let t1 = date1.getTime()
+            // console.log(`未来时间${date1}`)
+
+            let date2 = new Date()
+            let t2 = date2.getTime()
+            // console.log(`现在时间${date2}`)
+
+            let d = parseInt((t1 - t2) / 1000 / 60 / 60 / 24)
+            document.getElementById('d').innerHTML = d
+            let h = parseInt((t1 - t2) / 1000 / 60 / 60 % 24)
+            document.getElementById('h').innerHTML = h
+            let m = parseInt((t1 - t2) / 1000 / 60 % 60)
+            document.getElementById('m').innerHTML = m
+            let s = parseInt((t1 - t2) / 1000 % 60)
+            document.getElementById('s').innerHTML = s
+        }, 1000);
+    </script>
+</body>
+
+</html>
